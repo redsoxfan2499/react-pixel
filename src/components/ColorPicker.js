@@ -1,9 +1,13 @@
 import React from 'react'
+import Pixel from './Pixel'
+import Colors from './Colors'
 
-const ColorPicker = () => {
+const ColorPicker = (props) => {
     return (
-        <div>
-            ColorPicker
+        <div className="colorpicker">
+            {Colors.map((color, index) => {
+                return <Pixel key={index} background={color} />
+            })}
         </div>
     )
 }
