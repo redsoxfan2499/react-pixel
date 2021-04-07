@@ -6,7 +6,12 @@ const ColorPicker = (props) => {
     return (
         <div className="colorpicker">
             {Colors.map((color, index) => {
-                return <Pixel key={index} background={color} />
+                return <Pixel 
+                        key={index} 
+                        background={color} 
+                        current={Colors[props.currentColor === color]}
+                        onClick={event => props.setColor(index)}
+                         />
             })}
         </div>
     )

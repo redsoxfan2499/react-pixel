@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import Colors from './Colors';
 import Pixel from './Pixel';
 
-const Canvas = () => {
+const Canvas = (props) => {
+    const changeColor = (rowIndex, colIndex) => {
+        const newMatrix = JSON.parse(JSON.stringify(matrix))
+        newMatrix[rowIndex][colIndex] = props.currentColor
+        setMatrix(newMatrix)
+    };
     const [matrix, setMatrix] = useState(Array(30)
     .fill()
     .map(() => Array(30).fill(0)));
@@ -14,6 +19,7 @@ const Canvas = () => {
                     <Pixel
                     key={`${rowIndex}-${colIndex}`}
                     background={Colors[matrix[rowIndex][colIndex]]}
+                    onClick={event => changeColor(rowIndex, colIndex)}
                     />
                 )
             })
